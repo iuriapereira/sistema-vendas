@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.net.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="524.0" styleClass="secondThemeColor" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codemarket.control.InserirProdutoController">
+   <children>
+      <Label fx:id="tituloJanela" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="617.0" text="Cadastrar Produto" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <styleClass>
+            <String fx:value="primaryTextColor" />
+            <String fx:value="primaryThemeColor" />
+         </styleClass>
+      </Label>
+      <AnchorPane layoutX="2.0" layoutY="25.0" prefHeight="532.0" prefWidth="522.0" styleClass="secondThemeColor">
+         <children>
+            <Pane layoutX="6.0" layoutY="6.0" prefHeight="285.0" prefWidth="508.0" style="-fx-border-style: dotted; -fx-border-radius: 20;" styleClass="secondThemeColor">
+               <children>
+                  <Label contentDisplay="BOTTOM" layoutX="12.0" layoutY="19.0" prefHeight="56.0" prefWidth="405.0" styleClass="secondTextColor" text="Código de Barras *">
+                     <graphic>
+                        <TextField fx:id="idBarras" onKeyReleased="#validaCodigoBarras" prefHeight="31.0" prefWidth="400.0" />
+                     </graphic>
+                  </Label>
+                  <Label contentDisplay="BOTTOM" layoutX="423.0" layoutY="19.0" prefHeight="56.0" prefWidth="67.0" styleClass="secondTextColor" text="Unidade *">
+                     <graphic>
+                        <ComboBox fx:id="idUnidade" prefHeight="31.0" prefWidth="69.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ComboBox>
+                     </graphic>
+                  </Label>
+                  <Label contentDisplay="BOTTOM" layoutX="249.0" layoutY="158.0" prefHeight="56.0" prefWidth="239.0" styleClass="secondTextColor" text="Grupo / Categoria">
+                     <graphic>
+                        <TextField fx:id="idGrupo" prefHeight="31.0" prefWidth="222.0" />
+                     </graphic>
+                  </Label>
+                  <CheckBox fx:id="idControle" layoutX="8.0" layoutY="158.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="303.0" styleClass="secondTextColor" text="Ativar o controle de estoque">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </CheckBox>
+                  <CheckBox fx:id="idProibir" layoutX="8.0" layoutY="186.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="239.0" styleClass="secondTextColor" text="Proibir venda ao atingir o limite minímo">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </CheckBox>
+                  <Label alignment="CENTER" contentDisplay="BOTTOM" layoutX="5.0" layoutY="94.0" prefHeight="56.0" prefWidth="487.0" styleClass="secondTextColor" text="Descrição do Produto *">
+                     <graphic>
+                        <TextField fx:id="idDescricao" prefHeight="31.0" prefWidth="474.0" />
+                     </graphic>
+                  </Label>
+                  <Button fx:id="idAdicionarGrupo" layoutX="465.0" layoutY="177.0" mnemonicParsing="false" onAction="#handlerAdicionarGrupo" prefHeight="40.0" prefWidth="31.0" style="-fx-background-color: Transparent;" styleClass="buttonProduto">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon iconName="PLUS_SQUARE_ALT" size="2em" styleClass="primaryIconColor">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </FontAwesomeIcon>
+                     </graphic>
+                  </Button>
+                  <Label alignment="CENTER" contentDisplay="BOTTOM" layoutX="80.0" layoutY="219.0" prefHeight="56.0" prefWidth="350.0" styleClass="secondTextColor" text="Fornecedor *" textAlignment="CENTER">
+                     <graphic>
+                        <ComboBox fx:id="idFornecedor" prefHeight="31.0" prefWidth="336.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ComboBox>
+                     </graphic>
+                  </Label>
+               </children>
+            </Pane>
+            <AnchorPane layoutX="6.0" layoutY="298.0" prefHeight="155.0" prefWidth="508.0" style="-fx-border-style: dotted;" styleClass="secondThemeColor">
+               <children>
+                  <Pane layoutX="5.0" layoutY="8.0" maxHeight="220.0" minHeight="141.0" minWidth="246.0" prefHeight="141.0" prefWidth="246.0" style="-fx-border-style: dotted;">
+                     <children>
+                        <Label contentDisplay="RIGHT" layoutX="26.0" layoutY="52.0" prefHeight="31.0" prefWidth="198.0" styleClass="secondTextColor" text="Qtd. Estoque:">
+                           <graphic>
+                              <TextField fx:id="idQuantidade" prefHeight="31.0" prefWidth="111.0" />
+                           </graphic>
+                        </Label>
+                        <DatePicker fx:id="idAtualizacao" editable="false" layoutX="62.0" layoutY="94.0" prefHeight="31.0" prefWidth="152.0" promptText="Data de Atualização">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </DatePicker>
+                        <Label contentDisplay="RIGHT" layoutX="19.0" layoutY="14.0" prefHeight="31.0" prefWidth="204.0" styleClass="secondTextColor" text="Limite Minímo:">
+                           <graphic>
+                              <TextField fx:id="idMinimo" prefHeight="31.0" prefWidth="110.0" />
+                           </graphic>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="255.0" layoutY="8.0" maxHeight="222.0" minHeight="141.0" minWidth="246.0" prefHeight="141.0" prefWidth="246.0" style="-fx-border-style: dotted;">
+                     <children>
+                        <Label contentDisplay="RIGHT" layoutX="28.0" layoutY="100.0" prefHeight="31.0" prefWidth="198.0" styleClass="secondTextColor" text="Valor Avista(R$):">
+                           <graphic>
+                              <TextField fx:id="idAvistaValor" onAction="#valorAvista" prefHeight="31.0" prefWidth="105.0" />
+                           </graphic>
+                        </Label>
+                        <Label contentDisplay="RIGHT" layoutX="15.0" layoutY="64.0" prefHeight="31.0" prefWidth="216.0" styleClass="secondTextColor" text="Margem Avista(%):">
+                           <graphic>
+                              <TextField fx:id="idAvistaMargem" prefHeight="31.0" prefWidth="105.0" />
+                           </graphic>
+                        </Label>
+                        <Label contentDisplay="RIGHT" layoutX="22.0" layoutY="17.0" prefHeight="31.0" prefWidth="204.0" styleClass="secondTextColor" text="Valor de Compra:">
+                           <graphic>
+                              <TextField fx:id="idCompra" prefHeight="31.0" prefWidth="105.0" />
+                           </graphic>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+            <Button fx:id="buttonCadastrar" alignment="TOP_CENTER" contentDisplay="TOP" graphicTextGap="1.0" layoutX="84.0" layoutY="458.0" mnemonicParsing="false" onAction="#handlerCadastrar" prefHeight="112.0" prefWidth="129.0" style="-fx-background-color: Transparent;" text="Cadastrar" textAlignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon iconName="CHECK_CIRCLE_ALT" size="4em" styleClass="primaryIconColor" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </FontAwesomeIcon>
+               </graphic>
+               <styleClass>
+                  <String fx:value="buttonProduto" />
+                  <String fx:value="secondTextColor" />
+               </styleClass>
+            </Button>
+            <Button fx:id="buttonCancelar" alignment="TOP_CENTER" contentDisplay="TOP" graphicTextGap="1.0" layoutX="316.0" layoutY="457.0" mnemonicParsing="false" onAction="#handlerCancelar" prefHeight="112.0" prefWidth="129.0" style="-fx-background-color: Transparent;" text="Cancelar" textAlignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon iconName="CLOSE" size="4em" styleClass="primaryIconColor" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </FontAwesomeIcon>
+               </graphic>
+               <styleClass>
+                  <String fx:value="buttonProduto" />
+                  <String fx:value="secondTextColor" />
+               </styleClass>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+   <stylesheets>
+      <URL value="@style.css" />
+      <URL value="@styleSettings.css" />
+   </stylesheets>
+</AnchorPane>
